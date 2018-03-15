@@ -1,0 +1,20 @@
+Package: warc
+Type: Package
+Title: Read warc files into R
+Version: 0.1
+Authors@R: c(
+    person("Javier", "Luraschi", email = "javier@rstudio.com", role = c("aut", "cre"))
+    )
+Maintainer: Javier Luraschi <javier@rstudio.com>
+Description: Load WARC (Web ARChive) files into R. This allows to read files from
+    the Common Crawl project <http://commoncrawl.org/>.
+License: Apache License 2.0
+BugReports: https://github.com/javierluraschi/sparkwarc
+Encoding: UTF-8
+LazyData: true
+Imports:
+    Rcpp
+RoxygenNote: 6.0.1
+LinkingTo:
+    Rcpp
+SystemRequirements: C++11
