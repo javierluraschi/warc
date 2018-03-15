@@ -1,0 +1,43 @@
+---
+title: "Read warc files into R"
+output:
+  github_document:
+    fig_width: 9
+    fig_height: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This package provides a `read_warc()` function to read WARC files. This allows to read files
+from the [Common Crawl](https://commoncrawl.org/) project.
+
+## Installation
+
+```{r eval=FALSE}
+devtools::install_github("javierluraschi/warc")
+```
+
+## Intro
+
+A sample WARC file is included in this package, it's path can be retrieved with:
+
+```{r}
+warc_file <- system.file("samples/sample.warc.gz", package = "warc")
+```
+
+Read a warc file with:
+
+```{r}
+warc::read_warc(warc_file)
+```
+
+As part of reading a WARC file, a filter can be applied over each WARC entry or over
+each line. For instance, to retrieve all links referenced under an `<a` tag we can run:
+
+```{r}
+lines_with_links <- warc::read_warc(warc_file, line_filter = "<a href")
+gsub(".*href=\"([^\"]*)\".*|(.*)", "\\1", lines_with_links$content)
+```
+
